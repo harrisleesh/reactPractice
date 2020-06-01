@@ -11,15 +11,13 @@ function Square(props) {
 
 class Board extends React.Component {
   render() {
-    return this.props.squares.map((square, index) => (
-      <Square value={square} onClick={() => this.props.onClick(index)} />
+    return this.props.squares.map((squareRow, index) => (
+      <div className="board-row">
+        {squareRow.map((square, index) => (
+          <Square value={square} onClick={() => this.props.onClick(index)} />
+        ))}
+      </div>
     ));
-    // return (
-    //   <div>
-    //     <div className="board-row">
-    //     </div>
-    //   </div>
-    // );
   }
 }
 
@@ -29,7 +27,7 @@ class Game extends React.Component {
     this.state = {
       history: [
         {
-          squares: Array(9).fill(null),
+          squares: Array(3).fill(Array(3).fill(null)),
           index: null,
           jumped: null,
         },
